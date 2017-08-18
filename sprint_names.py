@@ -38,7 +38,7 @@ ADJECTIVES = ['admiring', 'adoring', 'affectionate', 'agitated', 'amazing',
 
 # Cyclists, of course.
 NAMES = ['Armstrong', 'Basso', 'Boonen', 'Cancellara', 'Cavendish',
-         'Contador', 'Danielson', 'Evans', 'Froome', 'Hincapie', 'Horner',
+         'Contador', 'Danielson', 'Evans', 'Froome', 'Hari', 'Hincapie', 'Horner',
          'Hoy', 'Hushovd', 'Julich', 'Kloden', 'Landis', 'Leipheimer',
          'Merckx', 'Museeuw', "O'Grady", 'Phinney', 'Powers', 'Renshaw',
          'Schleck', 'Thomas', 'Ullrich', 'Uran', 'Valverde', 'VanGarderen',
