@@ -14,6 +14,7 @@
 
 """The entire stupid project."""
 
+import argparse
 import random
 
 # Stolen without shame from Docker's names-generator.go.
@@ -37,18 +38,39 @@ ADJECTIVES = ['admiring', 'adoring', 'affectionate', 'agitated', 'amazing',
               'youthful', 'zealous', 'zen']
 
 # Cyclists, of course.
-NAMES = ['Armstrong', 'Basso', 'Boonen', 'Cancellara', 'Cavendish',
-         'Contador', 'Danielson', 'Evans', 'Froome', 'Hincapie', 'Horner',
-         'Hoy', 'Hushovd', 'Julich', 'Kloden', 'Landis', 'Leipheimer',
-         'Merckx', 'Museeuw', "O'Grady", 'Phinney', 'Powers', 'Renshaw',
-         'Schleck', 'Thomas', 'Ullrich', 'Uran', 'Valverde', 'VanGarderen',
-         'Vaughters', 'Voigt', 'Vos', 'Wiggins', 'Zabel', 'Zabriskie']
+CYCLISTS = ['Armstrong', 'Basso', 'Boonen', 'Cancellara', 'Cavendish',
+            'Contador', 'Danielson', 'Evans', 'Froome', 'Hincapie', 'Horner',
+            'Hoy', 'Hushovd', 'Julich', 'Kloden', 'Landis', 'Leipheimer',
+            'Merckx', 'Museeuw', "O'Grady", 'Phinney', 'Powers', 'Renshaw',
+            'Schleck', 'Thomas', 'Ullrich', 'Uran', 'Valverde', 'VanGarderen',
+            'Vaughters', 'Voigt', 'Vos', 'Wiggins', 'Zabel', 'Zabriskie']
 
+STARWARS = ['Ackbar', 'Amidala', 'Anakin', 'Andor', 'BB-8', 'Binks', 'C-3PO',
+            'Calrissian', 'Chewbacca', 'Cody', 'Dameron', 'Darth Vader',
+            'Darth Tyranus', 'Darth Maul', 'Darth Sidius', 'Dooku', 'Erso',
+            'Fett', 'Finn', 'Grievous', 'Jabba', 'Qui-Gon Jinn', 'Luke',
+            'Maz Kanata', 'Kenobi', 'Organa', 'Leia', 'Palpatine', 'Phasma',
+            'R2-D2', 'Kylo Ren', 'Shmi', 'Skywalker', 'Snoke', 'Solo', 'Windu',
+            'Yoda', ]
+
+
+NAME_PACKS = {'cyclists': CYCLISTS, 'starwars': STARWARS}
 
 def main():
+    parser = argparse.ArgumentParser(description='Generate the best sprint names.')
+    parser.add_argument('--name-pack',
+                        action='store',
+                        help='Name of the pack used for generating name.',
+                        default='cyclists')
+    args = parser.parse_args()
+
+    if not args.name_pack in NAME_PACKS:
+        print(f'Unknown name pack "{args.name_pack}", available packs: {", ".join(NAME_PACKS.keys())}')
+        return
+
     print("Your next sprint should be called {} {}.".format(
         random.choice(ADJECTIVES).capitalize(),
-        random.choice(NAMES)
+        random.choice(NAME_PACKS[args.name_pack])
     ))
 
 
